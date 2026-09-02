@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050b14"><title>ROAD TO PREMIER LEAGUE</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050b14;color:#eef6ff;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button,input,select,textarea{font:inherit}.container{max-width:1180px;margin:auto;padding:18px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0 20px}.brand{display:flex;align-items:center;gap:12px}.ball{width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,#20e87c,#13cce9);display:grid;place-items:center;font-size:25px;box-shadow:0 12px 35px #19db9330}.brand b{font-size:18px}.brand small{display:block;color:#748ba1;font-size:10px;letter-spacing:1.5px}.navpill{padding:9px 14px;background:#0c1a29;border:1px solid #1b3349;border-radius:99px;color:#a7bbcd}
+.hero{min-height:450px;border:1px solid #1b3b4a;border-radius:32px;padding:42px;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 0,#123e43 0,#091c2a 38%,#07111d 80%);display:flex;align-items:center}.hero:before{content:"";position:absolute;width:430px;height:430px;border-radius:50%;left:-140px;bottom:-230px;background:#1de37c12}.hero-content{max-width:760px;position:relative;z-index:1}.eyebrow{color:#4bef98;font-weight:900;letter-spacing:2px;font-size:13px}.hero h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-3px;margin:13px 0}.hero h1 span{color:#46ed95}.hero p{font-size:18px;line-height:1.7;color:#a9bfd1;max-width:650px}.quote{color:#fff;font-weight:800;font-size:17px;margin:25px 0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.primary{background:linear-gradient(90deg,#20df78,#15d2e3);color:#031016;border:0;font-weight:950;padding:14px 20px;border-radius:14px;cursor:pointer}.ghost{background:#0e2232;color:#c4d5e3;border:1px solid #27435a;padding:14px 20px;border-radius:14px;cursor:pointer}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px}.section-title h2{margin:0;font-size:23px}.muted{color:#8197aa;font-size:13px}
+.dashboard{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.card{background:#0a1725;border:1px solid #183047;border-radius:24px;padding:22px;box-shadow:0 18px 50px #0003}
+.bigrow{display:flex;justify-content:space-between;align-items:end}.big{font-size:56px;font-weight:1000;line-height:1}.big small{font-size:17px;color:#7890a4;font-weight:600}.pct{color:#48ef98;font-weight:900}.bar{height:16px;background:#07111c;border-radius:99px;margin:18px 0 9px;padding:3px}.bar div{height:100%;width:0;background:linear-gradient(90deg,#20df78,#23d6f2);border-radius:99px;transition:.5s}.barlabels{display:flex;justify-content:space-between;color:#71879a;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:17px}.stat{background:#07121e;border:1px solid #142a3d;border-radius:15px;padding:13px}.stat small{color:#7890a4}.stat strong{display:block;font-size:25px;margin-top:4px}
+.goal{background:linear-gradient(145deg,#0e2929,#0a1725)}.goal h3{margin:0 0 8px}.target{font-size:38px;font-weight:1000}.target span{color:#49ee97}.medals{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.medal{border:1px solid #20384c;background:#0b1a29;border-radius:13px;padding:11px;color:#7e95a9;font-size:12px}.medal.on{border-color:#236a4b;background:#103225;color:#5bf0a1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:12px;color:#8ea5b7;display:block;margin:0 0 6px}input,select,textarea{width:100%;padding:12px;border:1px solid #244057;background:#07121e;color:white;border-radius:12px;outline:0}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}.check{display:flex;align-items:center;gap:8px;padding:10px;background:#0b211a;border-radius:12px;margin-top:11px}.check input{width:auto}.submit{width:100%;margin-top:13px;padding:14px;border:0;border-radius:13px;background:linear-gradient(90deg,#20df78,#15d2e3);font-weight:950;cursor:pointer}
+.motiv{display:flex;flex-direction:column;justify-content:center;min-height:100%}.motiv .mark{font-size:38px}.motiv h3{font-size:26px;line-height:1.25;margin:12px 0}.motiv p{color:#91a8ba;line-height:1.6}.newquote{color:#50ed9b;font-weight:800}
+.history{margin-top:16px}.item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #152b3d}.item:last-child{border:0}.num{width:45px;height:45px;border-radius:13px;background:#10283a;color:#50ed9b;display:grid;place-items:center;font-weight:950}.item b{display:block}.item span{color:#71889b;font-size:12px}.tag{padding:6px 9px;background:#102438;border-radius:99px;color:#94aabd;font-size:11px}
+.footer{text-align:center;color:#566d80;font-size:12px;padding:30px}.empty{text-align:center;color:#708699;padding:30px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,30px);opacity:0;background:#eafff2;color:#06331d;padding:13px 18px;border-radius:99px;font-weight:900;transition:.25s;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){.hero{padding:26px;min-height:410px}.dashboard,.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.item{grid-template-columns:44px 1fr}.tag{display:none}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="nav"><div class="brand"><div class="ball">⚽</div><div><b>ROAD TO PREMIER LEAGUE</b><small>200 WORKOUTS • ONE DREAM</small></div></div><div class="navpill" id="streak">🔥 0 ימים רצופים</div></header>
+
+<section class="hero">
+<div class="hero-content">
+<div class="eyebrow">THE JOURNEY STARTS NOW</div>
+<h1>200 אימונים.<br><span>מטרה אחת.</span><br>ליגת העל.</h1>
+<p>לא מחכים להזדמנות. בונים אותה. כל אימון, כל ספרינט וכל שעה שאתה משקיע — מקרבים אותך לשחקן שאתה רוצה להיות.</p>
+<div class="quote">״החלום גדול. העבודה היומיומית גדולה יותר.״</div>
+<div class="hero-actions"><button class="primary" onclick="document.getElementById('add').scrollIntoView({behavior:'smooth'})">+ הוסף אימון</button><button class="ghost" onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'})">צפה במסע שלי ↓</button></div>
+</div>
+</section>
+
+<div class="section-title"><h2>המסע שלך</h2><span class="muted">היעד: 200 אימונים</span></div>
+<section class="dashboard">
+<div class="card">
+<div class="bigrow"><div><div class="muted">התקדמות</div><div class="big"><span id="count">0</span><small> / 200</small></div></div><div class="pct" id="pct">0%</div></div>
+<div class="bar"><div id="bar"></div></div><div class="barlabels"><span>אימון ראשון</span><span>ליגת העל 🏆</span></div>
+<div class="stats"><div class="stat"><small>אימונים</small><strong id="s1">0</strong></div><div class="stat"><small>רצף</small><strong id="s2">0</strong></div><div class="stat"><small>שיא רצף</small><strong id="s3">0</strong></div><div class="stat"><small>נותרו</small><strong id="s4">200</strong></div></div>
+</div>
+<div class="card goal"><h3>🏆 חדר הישגים</h3><div class="target"><span id="target">0</span> / 200</div><div class="muted">כל אבן דרך נפתחת בדרך.</div><div class="medals"><div class="medal" id="m10">⚡ 10 אימונים</div><div class="medal" id="m25">🔥 25 אימונים</div><div class="medal" id="m50">💪 50 אימונים</div><div class="medal" id="m100">👑 100 אימונים</div><div class="medal" id="m150">🚀 150 אימונים</div><div class="medal" id="m200">🏆 200 — היעד</div></div></div>
+</section>
+
+<div class="section-title"><h2>היום שלך</h2><span class="muted">אין תירוצים. יש עבודה.</span></div>
+<section class="two" id="add">
+<div class="card">
+<h2 style="margin-top:0">➕ רישום אימון</h2>
+<div class="formgrid">
+<div><label>תאריך</label><input id="date" type="date"></div>
+<div><label>סוג אימון</label><select id="type"><option>כדורגל</option><option>טכניקה</option><option>מהירות</option><option>כושר</option><option>כוח</option><option>משחק</option><option>אישי</option></select></div>
+<div class="full"><label>מה עשיתי?</label><textarea id="notes" placeholder="90 דקות, שליטה בכדור, בעיטות, ספרינטים..."></textarea></div>
+</div>
+<label class="check"><input id="hard" type="checkbox"> 💪 זה היה אימון חזק במיוחד</label>
+<button class="submit" onclick="add()">סיימתי אימון — ממשיכים 🚀</button>
+</div>
+<div class="card motiv"><div class="mark">🔥</div><div class="muted">המשפט שלך להיום</div><h3 id="quoteText">אל תמדוד את עצמך לפי מי שאתה היום. תמדוד לפי כמה אתה מוכן לעבוד כדי להיות טוב יותר מחר.</h3><p>פתח את האתר בכל יום. אפילו ביום שאין כוח. <span class="newquote">עקביות מנצחת.</span></p><button class="ghost" onclick="newQuote()">משפט מוטיבציה חדש</button></div>
+</section>
+
+<section class="card history" id="journey"><div class="section-title" style="margin:0 0 4px"><h2>📅 יומן המסע</h2><span class="muted" id="last">עוד לא התחלת</span></div><div id="history"></div><button class="ghost" style="margin-top:12px" onclick="backup()">💾 שמור גיבוי</button></section>
+
+<footer class="footer">ROAD TO PREMIER LEAGUE • 200 WORKOUTS • KEEP GOING.</footer>
+</div><div class="toast" id="toast"></div>
+<script>
+const KEY="road200_final_v3";let data=JSON.parse(localStorage.getItem(KEY)||"[]");const $=id=>document.getElementById(id);$("date").value=new Date().toISOString().slice(0,10);
+const quotes=["אל תמדוד את עצמך לפי מי שאתה היום. תמדוד לפי כמה אתה מוכן לעבוד כדי להיות טוב יותר מחר.","אין אימון קטן כשיש מטרה גדולה.","היום שבו לא בא לך להתאמן הוא היום שבו המשמעת שלך נבחנת.","כישרון נותן לך התחלה. עבודה קשה נותנת לך יתרון.","עוד אימון אחד. עוד צעד אחד. עוד סיבה להאמין.","אל תחכה להיות מוכן. תתחיל, ותהיה מוכן בדרך.","החלום לא רחוק — אם אתה מוכן להגיע אליו יום אחרי יום.","מי שרוצה את התוצאה חייב לאהוב את התהליך."];
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function add(){if(data.length>=200){show("200 אימונים! הגעת ליעד 🏆");return}data.push({id:Date.now(),date:$("date").value||new Date().toISOString().slice(0,10),type:$("type").value,notes:$("notes").value.trim(),hard:$("hard").checked});$("notes").value="";$("hard").checked=false;save();show("אימון נוסף! עוד צעד לליגת העל 🚀")}
+function streaks(){let set=new Set(data.map(x=>x.date)),arr=[...set].sort(),best=0,cur=0,prev=null;for(const d of arr){let t=new Date(d+"T12:00:00");if(prev&&Math.round((t-prev)/86400000)===1)cur++;else cur=1;best=Math.max(best,cur);prev=t}let t=new Date(),st=0;for(let i=0;i<400;i++){let s=new Date(t);s.setDate(t.getDate()-i);if(set.has(s.toISOString().slice(0,10)))st++;else if(i>0)break}return[st,best]}
+function render(){let n=data.length,p=Math.round(n/200*100),[st,best]=streaks();$("count").textContent=n;$("target").textContent=n;$("pct").textContent=p+"%";$("bar").style.width=p+"%";$("s1").textContent=n;$("s2").textContent=st;$("s3").textContent=best;$("s4").textContent=200-n;$("streak").textContent="🔥 "+st+" ימים רצופים";if(n)$("last").textContent="אימון אחרון: "+fmt(data[data.length-1].date);[10,25,50,100,150,200].forEach(v=>$("m"+v).classList.toggle("on",n>=v));let h=$("history");if(!n){h.innerHTML='<div class="empty">היומן עדיין ריק.<br>האימון הראשון שלך יכול להיות היום.</div>';return}h.innerHTML=[...data].reverse().map((x,i)=>`<div class="item"><div class="num">${n-i}</div><div><b>${esc(x.type)} ${x.hard?"💪":""}</b><span>${fmt(x.date)}${x.notes?" · "+esc(x.notes):""}</span></div><div class="tag">#${n-i}</div></div>`).join("")}
+function fmt(s){return new Date(s+"T12:00:00").toLocaleDateString("he-IL",{day:"2-digit",month:"2-digit",year:"numeric"})}function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}function newQuote(){$("quoteText").textContent=quotes[Math.floor(Math.random()*quotes.length)]}function show(t){let x=$("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2000)}function backup(){let b=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="road-to-premier-league-backup.json";a.click()}render();
+</script></body></html>
