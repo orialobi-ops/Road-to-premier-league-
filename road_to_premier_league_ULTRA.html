@@ -32,3 +32,37 @@
 <div class="actions"><button class="primary" onclick="addWorkout()">✓ סיימתי אימון</button><button class="secondary" onclick="openWorkout()">＋ פרטי אימון</button></div></div>
 <div class="stats"><div class="stat"><div class="ico">🔥</div><b id="streak">0</b><span>רצף ימים</span></div><div class="stat"><div class="ico">⚡</div><b id="xp">0</b><span>XP</span></div><div class="stat"><div class="ico">🏋️</div><b id="left">200</b><span>אימונים נשארו</span></div></div>
 <div class="section"><div class="sectionhead"><h2>עקביות</h2><span class="muted">90 ימים אחרונים</span></div><div class="card"><div class="heat" id="heat"></div></div></div>
+<div class="section"><div class="sectionhead"><h2>אבני דרך</h2><span class="muted">הדרך שלך</span></div><div class="milestones" id="milestones"></div></div>
+</main>
+<aside class="side"><div class="card quote"><div class="gold">🔥 המשפט שלך להיום</div><div class="q" id="quote">"אל תחכה למוטיבציה. תבנה משמעת."</div><div class="muted">כל אימון קטן מצטבר לניצחון גדול.</div></div><div class="card"><div class="muted">הרמה שלך</div><div class="level">LEVEL <span id="level">1</span></div><div class="xp"><i id="xpbar"></i></div><div class="muted" style="margin-top:8px"><span id="xpnext">100</span> XP לרמה הבאה</div></div><div class="card"><div class="muted">המסר של היום</div><h3 id="message">העבודה שאף אחד לא רואה היא זו שבונה את השחקן שכולם רואים.</h3></div></aside></div>
+</section>
+
+<section id="journal" class="page"><div class="sectionhead"><h2>📅 יומן אימונים</h2><button class="primary" onclick="openWorkout()">＋ הוסף אימון</button></div><div class="list" id="journalList"></div></section>
+<section id="achievements" class="page"><div class="sectionhead"><h2>🏆 הישגים</h2></div><div class="milestones" id="achList"></div></section>
+<section id="stats" class="page"><div class="grid"><div class="card"><h2>📊 הנתונים שלך</h2><p>אימונים שהושלמו: <b id="sDone">0</b></p><p>רצף נוכחי: <b id="sStreak">0</b> ימים</p><p>XP: <b id="sXp">0</b></p><p>אחוז השלמה: <b id="sPct">0%</b></p></div><div class="card quote"><div class="gold">זכור</div><div class="q">"אתה לא צריך להיות הכי טוב היום. אתה צריך להיות טוב יותר ממי שהיית אתמול."</div></div></div></section>
+</div>
+
+<div class="modal" id="goalModal"><div class="box"><button class="close" onclick="closeGoal()">×</button><h2>🎯 בחר את המסלול שלך</h2><label>שם המטרה</label><input id="goalName" placeholder="למשל: ליגת העל"><label>מספר אימונים</label><input id="goalTarget" type="number" min="1" value="200"><button class="primary" style="width:100%;margin-top:18px" onclick="saveGoal()">בונים את המסע 🚀</button></div></div>
+<div class="modal" id="workModal"><div class="box"><button class="close" onclick="closeWorkout()">×</button><h2>💪 רושמים אימון</h2><label>סוג אימון</label><select id="type"><option>כדורגל</option><option>חדר כושר</option><option>ריצה</option><option>כדורסל</option><option>אימון אישי</option><option>אחר</option></select><label>משך בדקות</label><input id="minutes" type="number" value="60"><label>איך היה?</label><select id="rating"><option>🔥 מטורף</option><option>💪 חזק</option><option>🙂 טוב</option><option>😐 בינוני</option></select><label>הערה</label><textarea id="note" placeholder="מה עבד? מה לשפר בפעם הבאה?"></textarea><button class="primary" style="width:100%;margin-top:15px" onclick="saveWorkout()">שמור אימון + XP</button></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const KEY="rtg-big-v1";let d=JSON.parse(localStorage.getItem(KEY)||"null")||{name:"ליגת העל",target:200,done:0,xp:0,dates:[],logs:[]};
+const quotes=["אל תחכה למוטיבציה. תבנה משמעת.","הכאב של האימון זמני. הגאווה נשארת.","מי שמתמיד כשקשה, מנצח כשזה חשוב.","עוד אימון אחד. עוד צעד אחד.","החלום לא מתקרב אליך. אתה מתקרב אליו.","אין קיצורי דרך למקום שאליו אתה רוצה להגיע.","תעשה היום משהו שהגרסה העתידית שלך תודה לך עליו.","היום לא צריך להיות מושלם. הוא צריך לקרות."];
+function persist(){localStorage.setItem(KEY,JSON.stringify(d));render()}
+function addWorkout(){if(d.done>=d.target){toast("🏆 הגעת למטרה!");return}d.done++;d.xp+=50;d.dates.push(new Date().toISOString());d.logs.unshift({date:new Date().toLocaleDateString("he-IL"),type:"אימון",minutes:60,rating:"🔥 מטורף",note:"אימון שסומן כהושלם"});persist();toast("🔥 +50 XP! אימון הושלם");}
+function streak(){let ds=[...new Set(d.dates.map(x=>x.slice(0,10)))].sort().reverse();if(!ds.length)return 0;let n=1;for(let i=1;i<ds.length;i++){if((new Date(ds[i-1])-new Date(ds[i]))/86400000===1)n++;else break}return n}
+function render(){let p=Math.min(100,Math.round(d.done/d.target*100)),lv=Math.floor(d.xp/100)+1,rem=d.target-d.done;goal.textContent=d.name;target.textContent=d.target;done.textContent=d.done;left.textContent=Math.max(0,rem);pct.textContent=p+"%";bar.style.width=p+"%";streakEl();xp.textContent=d.xp;level.textContent=lv;xpbar.style.width=(d.xp%100)+"%";xpnext.textContent=100-(d.xp%100)||100;sDone.textContent=d.done;sStreak.textContent=streak();sXp.textContent=d.xp;sPct.textContent=p+"%";quote.textContent='"'+quotes[d.done%quotes.length]+'"';message.textContent=quotes[(d.done+3)%quotes.length];renderHeat();renderMilestones();renderJournal()}
+function streakEl(){document.getElementById("streak").textContent=streak()}
+function renderHeat(){heat.innerHTML="";for(let i=0;i<90;i++){let c=document.createElement("span");c.className="cell";let idx=d.dates.length-i;if(idx>0)c.className="cell "+(idx%5===0?"hot":"on");heat.appendChild(c)}}
+function renderMilestones(){let vals=[10,25,50,100,150,200];milestones.innerHTML="";achList.innerHTML="";vals.forEach(v=>{let done=v<=d.done;let a=document.createElement("div");a.className="mile "+(done?"done":"");a.innerHTML="<b>"+(done?"🏆":"🔒")+"</b>"+v+" אימונים";milestones.appendChild(a);achList.appendChild(a.cloneNode(true))})}
+function renderJournal(){journalList.innerHTML=d.logs.length?d.logs.map(x=>`<div class="work"><div><strong>${x.type} • ${x.minutes} דק׳</strong><small>${x.date} • ${x.rating}<br>${x.note||""}</small></div><div class="pill">+50 XP</div></div>`).join(""):`<div class="card"><h3>עוד אין אימונים ביומן</h3><p class="muted">התחל עכשיו — האימון הראשון הוא זה ששובר את המחסום.</p></div>`}
+function tab(id,b){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active")}
+function openGoal(){goalName.value=d.name;goalTarget.value=d.target;goalModal.classList.add("show")}function closeGoal(){goalModal.classList.remove("show")}
+function saveGoal(){d={name:goalName.value.trim()||"המטרה שלי",target:Math.max(1,parseInt(goalTarget.value)||200),done:0,xp:0,dates:[],logs:[]};persist();closeGoal();toast("🎯 מטרה חדשה נוצרה")}
+function openWorkout(){workModal.classList.add("show")}function closeWorkout(){workModal.classList.remove("show")}
+function saveWorkout(){if(d.done>=d.target){toast("הגעת ליעד!");return}let m=Math.max(1,parseInt(minutes.value)||60);d.done++;d.xp+=50+Math.min(50,Math.floor(m/10));d.dates.push(new Date().toISOString());d.logs.unshift({date:new Date().toLocaleDateString("he-IL"),type:type.value,minutes:m,rating:rating.value,note:note.value});persist();closeWorkout();note.value="";toast("⚡ האימון נשמר וקיבלת XP")}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1900)}
+render();
+</script>
+</body>
+</html>
