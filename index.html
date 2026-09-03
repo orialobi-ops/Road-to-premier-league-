@@ -1,185 +1,55 @@
-<!doctype html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07111f">
-<title>ROAD TO GOAL — הדרך שלך</title>
-<style>
-:root{--bg:#07111f;--card:#0d1a2b;--card2:#102238;--line:#20334b;--text:#f5f8fc;--muted:#91a3ba;--accent:#39e58c;--accent2:#4da3ff;--danger:#ff6174;--gold:#ffd166}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#123051 0,transparent 32%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
-button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.wrap{max-width:1180px;margin:auto;padding:20px}
-.top{position:sticky;top:0;z-index:20;background:rgba(7,17,31,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:18px}.logo{font-weight:900;letter-spacing:1px;font-size:19px}.logo span{color:var(--accent)}
-.navlinks{display:flex;gap:7px;margin-right:auto}.navlinks button{background:transparent;color:var(--muted);padding:9px 12px;border-radius:10px}.navlinks button.active,.navlinks button:hover{background:#14253b;color:#fff}
-.btn{padding:11px 15px;border-radius:12px;background:var(--accent);color:#04130b;font-weight:800}.btn.secondary{background:#14253b;color:#fff;border:1px solid var(--line)}.btn.danger{background:#321923;color:#ff9eaa}
-.page{display:none}.page.active{display:block}.hero{margin-top:22px;padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#10253c,#0a1727 65%);box-shadow:0 20px 60px #0004}
-.eyebrow{color:var(--accent);font-weight:800;font-size:13px}.hero h1{font-size:clamp(30px,5vw,52px);margin:8px 0 5px}.hero p{color:var(--muted);margin:0 0 22px}.heroRow{display:flex;gap:20px;align-items:center;justify-content:space-between}.progressBox{min-width:260px}.bar{height:12px;background:#07101c;border-radius:20px;overflow:hidden;border:1px solid var(--line)}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#8cffc2);border-radius:20px;transition:.4s}.small{color:var(--muted);font-size:13px;margin-top:8px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}.stat .icon{font-size:22px}.stat b{display:block;font-size:30px;margin-top:5px}.stat span{color:var(--muted);font-size:13px}
-.section{margin-top:24px}.sectionHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section h2{margin:0;font-size:21px}.muted{color:var(--muted)}
-.two{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
-.quote{font-size:23px;line-height:1.45;font-weight:800}.quote small{display:block;color:var(--accent);font-size:13px;margin-top:12px}
-.heat{display:grid;grid-template-columns:repeat(15,1fr);gap:5px;margin-top:12px}.cell{aspect-ratio:1;border-radius:4px;background:#142235}.cell.l1{background:#24543d}.cell.l2{background:#2f8b5d}.cell.l3{background:#39e58c}.legend{display:flex;gap:6px;align-items:center;justify-content:flex-start;color:var(--muted);font-size:12px;margin-top:10px}
-.milestones{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.mile{padding:13px;border:1px solid var(--line);border-radius:14px;background:#0a1727;text-align:center}.mile.done{border-color:#2b9f6a;background:#0c2419}.mile b{display:block;font-size:18px}.mile small{color:var(--muted)}
-.list{display:grid;gap:10px}.item{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#0a1727;border:1px solid var(--line);padding:13px;border-radius:13px}.item strong{display:block}.item small{color:var(--muted)}.badge{background:#173c2d;color:#8dffc0;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800}
-.form{display:grid;gap:12px}.form label{font-size:13px;color:var(--muted)}.form input,.form select,.form textarea{width:100%;background:#07111f;color:#fff;border:1px solid var(--line);padding:12px;border-radius:11px;outline:none}.form textarea{min-height:110px;resize:vertical}.actions{display:flex;gap:9px;flex-wrap:wrap}
-.empty{text-align:center;padding:35px;color:var(--muted)}
-.ach{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ach .card{min-height:120px}.locked{opacity:.45}.achIcon{font-size:30px}
-table{width:100%;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:right}th{color:var(--muted);font-size:13px}
-.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.show{display:flex}.modalBox{width:min(560px,100%);background:#0d1a2b;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 25px 80px #0009}.modalTop{display:flex;justify-content:space-between;align-items:center}.x{background:#17263a;color:#fff;width:38px;height:38px;border-radius:10px}
-.toast{position:fixed;bottom:22px;left:22px;background:#102238;border:1px solid #315071;padding:13px 16px;border-radius:13px;display:none;z-index:80}.toast.show{display:block}
-footer{text-align:center;color:#60758d;padding:35px 0 20px;font-size:12px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.milestones{grid-template-columns:repeat(3,1fr)}.ach{grid-template-columns:repeat(2,1fr)}.navlinks{overflow:auto}.heroRow{align-items:flex-start;flex-direction:column}.progressBox{width:100%}}
-@media(max-width:520px){.wrap{padding:13px}.nav{padding:11px 13px;gap:8px}.logo{font-size:15px}.navlinks button{padding:8px 7px;font-size:12px}.grid{gap:9px}.stat{padding:13px}.stat b{font-size:24px}.hero{padding:20px;border-radius:19px}.milestones{grid-template-columns:repeat(2,1fr)}.ach{grid-template-columns:1fr}.quote{font-size:19px}}
-</style>
-</head>
-<body>
-<header class="top"><nav class="nav">
-<div class="logo">ROAD <span>TO GOAL</span></div>
-<div class="navlinks">
-<button class="active" data-page="home">דשבורד</button>
-<button data-page="workouts">אימונים</button>
-<button data-page="stats">סטטיסטיקות</button>
-<button data-page="achievements">הישגים</button>
-<button data-page="journal">יומן</button>
-</div>
-<button class="btn" onclick="openWorkout()">+ אימון</button>
-</nav></header>
+ROAD TO GOAL
+דשבורד
+אימונים
+סטטיסטיקות
+הישגים
+יומן
++ אימון
+🔥 כל אימון מקרב אותך
+200 אימונים → ליגת העל
+בונים עקביות. צוברים ביטחון. מתקדמים צעד אחרי צעד.
 
-<main class="wrap">
-<section id="home" class="page active">
-<div class="hero">
-<div class="eyebrow">🔥 כל אימון מקרב אותך</div>
-<h1 id="goalTitle">200 אימונים → ליגת העל</h1>
-<p id="goalSub">בונים עקביות. צוברים ביטחון. מתקדמים צעד אחרי צעד.</p>
-<div class="heroRow"><div style="flex:1;width:100%"><div class="bar"><div class="fill" id="fill"></div></div><div class="small"><b id="doneText">0</b> מתוך <b id="targetText">200</b> אימונים · נשארו <b id="remainText">200</b></div></div><button class="btn secondary" onclick="openGoal()">✏️ עריכת יעד</button></div>
-</div>
+0 מתוך 200 אימונים · נשארו 200
+✏️ עריכת יעד
+🏋️
+0
+אימונים שהושלמו
+🔥
+0
+רצף ימים
+⚡
+0
+XP שנצבר
+🏆
+1
+רמה
+📅 עקביות
+90 ימים אחרונים
+פחות
+יותר
+💬 המשפט שלך להיום
+אל תחכה למוטיבציה. תתחיל, והמוטיבציה תגיע אחריך.
+— תזכור למה התחלת.
+🎯 אבני דרך
+תמשיך לזוז
+🔒 10
+אימונים
+🔒 25
+אימונים
+🔒 50
+אימונים
+🔒 100
+אימונים
+🔒 150
+אימונים
+🔒 200
+אימונים
+🕘 אימונים אחרונים
+הכול
+עדיין אין אימונים. לחץ על "+ אימון" כדי להתחיל.
+🚀 רמה 1
+צבור XP מכל אימון כדי לעלות רמה.
 
-<div class="grid">
-<div class="stat"><div class="icon">🏋️</div><b id="sDone">0</b><span>אימונים שהושלמו</span></div>
-<div class="stat"><div class="icon">🔥</div><b id="sStreak">0</b><span>רצף ימים</span></div>
-<div class="stat"><div class="icon">⚡</div><b id="sXP">0</b><span>XP שנצבר</span></div>
-<div class="stat"><div class="icon">🏆</div><b id="sLevel">1</b><span>רמה</span></div>
-</div>
-
-<div class="section two">
-<div class="card"><div class="sectionHead"><h2>📅 עקביות</h2><span class="muted">90 ימים אחרונים</span></div><div class="heat" id="heat"></div><div class="legend">פחות <span class="cell" style="width:13px;height:13px"></span><span class="cell l1" style="width:13px;height:13px"></span><span class="cell l2" style="width:13px;height:13px"></span><span class="cell l3" style="width:13px;height:13px"></span> יותר</div></div>
-<div class="card"><div class="sectionHead"><h2>💬 המשפט שלך להיום</h2></div><div class="quote" id="quote"></div></div>
-</div>
-
-<div class="section card"><div class="sectionHead"><h2>🎯 אבני דרך</h2><span class="muted">תמשיך לזוז</span></div><div class="milestones" id="milestones"></div></div>
-
-<div class="section two">
-<div class="card"><div class="sectionHead"><h2>🕘 אימונים אחרונים</h2><button class="btn secondary" onclick="showPage('workouts')">הכול</button></div><div class="list" id="recent"></div></div>
-<div class="card"><h2>🚀 רמה <span id="levelNum">1</span></h2><p class="muted">צבור XP מכל אימון כדי לעלות רמה.</p><div class="bar"><div class="fill" id="xpFill"></div></div><div class="small" id="xpText">0 / 100 XP</div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><div id="motivation" style="font-weight:800;font-size:18px"></div></div>
-</div>
-</section>
-
-<section id="workouts" class="page">
-<div class="sectionHead" style="margin-top:25px"><div><h1>🏋️ האימונים שלי</h1><p class="muted">כל אימון שנרשם הוא עוד צעד בדרך.</p></div><button class="btn" onclick="openWorkout()">+ הוסף אימון</button></div>
-<div class="card"><div id="workoutList" class="list"></div></div>
-</section>
-
-<section id="stats" class="page">
-<div style="margin-top:25px"><h1>📊 סטטיסטיקות</h1><p class="muted">תראה כמה עבודה כבר עשית.</p></div>
-<div class="grid">
-<div class="stat"><b id="stTotal">0</b><span>סה״כ אימונים</span></div><div class="stat"><b id="stMinutes">0</b><span>דקות אימון</span></div><div class="stat"><b id="stAvg">0</b><span>דירוג ממוצע</span></div><div class="stat"><b id="stBest">0</b><span>רצף שיא</span></div>
-</div>
-<div class="section card"><h2>סוגי אימונים</h2><div id="typeStats" class="list" style="margin-top:14px"></div></div>
-</section>
-
-<section id="achievements" class="page">
-<div style="margin-top:25px"><h1>🏆 הישגים</h1><p class="muted">פתח הישגים והוכח לעצמך שאתה מתקדם.</p></div>
-<div class="section ach" id="achList"></div>
-</section>
-
-<section id="journal" class="page">
-<div style="margin-top:25px"><h1>📓 יומן</h1><p class="muted">כתוב מה הרגשת, מה עבד ומה לשפר.</p></div>
-<div class="section card"><div class="form"><label>רשומה חדשה</label><textarea id="journalText" placeholder="איך היה היום? מה למדת?"></textarea><div class="actions"><button class="btn" onclick="addJournal()">שמור רשומה</button></div></div></div>
-<div class="section card"><div id="journalList" class="list"></div></div>
-</section>
-
-<footer>ROAD TO GOAL · האתר שומר את הנתונים במכשיר שלך בלבד.</footer>
-</main>
-
-<div class="modal" id="workoutModal"><div class="modalBox">
-<div class="modalTop"><h2>➕ רישום אימון</h2><button class="x" onclick="closeModal('workoutModal')">✕</button></div>
-<div class="form">
-<label>סוג אימון</label><select id="wType"><option>כדורגל</option><option>כוח</option><option>מהירות</option><option>טכניקה</option><option>כושר</option><option>משחק</option><option>אחר</option></select>
-<label>משך (דקות)</label><input id="wMinutes" type="number" min="1" value="60">
-<label>איך היה האימון?</label><select id="wRating"><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option></select>
-<label>הערה</label><textarea id="wNote" placeholder="מה עשית? מה לשפר בפעם הבאה?"></textarea>
-<div class="actions"><button class="btn" onclick="saveWorkout()">🔥 סיימתי אימון</button><button class="btn secondary" onclick="closeModal('workoutModal')">ביטול</button></div>
-</div></div></div>
-
-<div class="modal" id="goalModal"><div class="modalBox">
-<div class="modalTop"><h2>🎯 יעד חדש</h2><button class="x" onclick="closeModal('goalModal')">✕</button></div>
-<div class="form">
-<label>שם היעד</label><input id="gTitle" value="200 אימונים → ליגת העל">
-<label>מספר אימונים</label><input id="gTarget" type="number" min="1" value="200">
-<label>משפט מתחת ליעד</label><input id="gSub" value="בונים עקביות. צוברים ביטחון. מתקדמים צעד אחרי צעד.">
-<div class="actions"><button class="btn" onclick="saveGoal()">שמור יעד</button><button class="btn secondary" onclick="closeModal('goalModal')">ביטול</button></div>
-</div></div></div>
-<div class="toast" id="toast"></div>
-
-<script>
-const KEY="road_to_goal_v2";
-const quotes=[
-"אתה לא צריך להיות מושלם. אתה צריך להיות עקבי.",
-"כל אימון שאתה מסיים הוא הוכחה שאתה רציני לגבי החלום שלך.",
-"היום קשה? מצוין. כאן בדיוק נבנית השחקן שאתה רוצה להיות.",
-"אל תחכה למוטיבציה. תתחיל, והמוטיבציה תגיע אחריך.",
-"עוד אימון אחד. עוד צעד אחד. עוד יום אחד של עבודה.",
-"החלום גדול? תפרק אותו לאימונים.",
-"מי שעובד כשאף אחד לא רואה — מוכן כשכולם מסתכלים.",
-"התוצאה מתחילה בהרגל קטן שחוזר על עצמו."
-];
-let d=JSON.parse(localStorage.getItem(KEY)||"null")||{goal:{title:"200 אימונים → ליגת העל",target:200,sub:"בונים עקביות. צוברים ביטחון. מתקדמים צעד אחרי צעד."},workouts:[],journal:[]};
-
-function save(){localStorage.setItem(KEY,JSON.stringify(d));render()}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function dateStr(x){return new Date(x).toLocaleDateString("he-IL",{day:"2-digit",month:"2-digit",year:"numeric"})}
-function days(){return [...new Set(d.workouts.map(x=>new Date(x.date).toISOString().slice(0,10)))].sort()}
-function streak(){
- const ds=days(); if(!ds.length)return 0;
- let cur=new Date();cur.setHours(0,0,0,0);let today=cur.toISOString().slice(0,10);
- let y=new Date(cur);y.setDate(y.getDate()-1);let yd=y.toISOString().slice(0,10);
- let last=ds.includes(today)?today:(ds.includes(yd)?yd:null);if(!last)return 0;
- let n=0,dt=new Date(last);while(ds.includes(dt.toISOString().slice(0,10))){n++;dt.setDate(dt.getDate()-1)}return n
-}
-function level(){return Math.floor(d.workouts.reduce((a,x)=>a+(50+Math.min(50,Math.floor((+x.minutes||0)/10))),0)/100)+1}
-function xp(){return d.workouts.reduce((a,x)=>a+(50+Math.min(50,Math.floor((+x.minutes||0)/10))),0)}
-function showPage(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".navlinks button").forEach(x=>x.classList.toggle("active",x.dataset.page===id));render()}
-document.querySelectorAll(".navlinks button").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
-function openWorkout(){document.getElementById("workoutModal").classList.add("show")}
-function openGoal(){document.getElementById("goalModal").classList.add("show");gTitle.value=d.goal.title;gTarget.value=d.goal.target;gSub.value=d.goal.sub}
-function closeModal(id){document.getElementById(id).classList.remove("show")}
-function toast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200)}
-function saveWorkout(){
- const w={id:Date.now(),date:new Date().toISOString(),type:wType.value,minutes:Math.max(1,+wMinutes.value||1),rating:+wRating.value,note:wNote.value.trim()};
- d.workouts.unshift(w);wNote.value="";closeModal("workoutModal");save();toast("🔥 אימון נשמר! עוד צעד בדרך.");
-}
-function saveGoal(){d.goal={title:gTitle.value.trim()||"היעד שלי",target:Math.max(1,+gTarget.value||1),sub:gSub.value.trim()};closeModal("goalModal");save();toast("🎯 היעד עודכן!")}
-function addJournal(){let t=journalText.value.trim();if(!t)return;d.journal.unshift({date:new Date().toISOString(),text:t});journalText.value="";save();toast("📓 הרשומה נשמרה")}
-function delWorkout(id){d.workouts=d.workouts.filter(x=>x.id!==id);save();toast("האימון נמחק")}
-function render(){
- const done=d.workouts.length,target=d.goal.target,pct=Math.min(100,done/target*100),x=xp(),lv=level(),inLevel=x%100;
- goalTitle.textContent=d.goal.title;goalSub.textContent=d.goal.sub;fill.style.width=pct+"%";doneText.textContent=done;targetText.textContent=target;remainText.textContent=Math.max(0,target-done);
- sDone.textContent=done;sStreak.textContent=streak();sXP.textContent=x;sLevel.textContent=lv;levelNum.textContent=lv;xpFill.style.width=inLevel+"%";xpText.textContent=inLevel+" / 100 XP";
- quote.innerHTML=esc(quotes[new Date().getDate()%quotes.length])+"<small>— תזכור למה התחלת.</small>";
- motivation.textContent=done>=target?"🏆 הגעת ליעד. עכשיו בוחרים יעד גדול יותר!":done===0?"היום מתחילים. אימון ראשון הוא תמיד הכי חשוב.":`נשארו ${Math.max(0,target-done)} אימונים. ממשיכים. 💪`;
- milestones.innerHTML=[10,25,50,100,150,200].map(n=>`<div class="mile ${done>=n?"done":""}"><b>${done>=n?"🏆":"🔒"} ${n}</b><small>${done>=n?"הושלם!":"אימונים"}</small></div>`).join("");
- heat.innerHTML="";for(let i=89;i>=0;i--){let dt=new Date();dt.setDate(dt.getDate()-i);let k=dt.toISOString().slice(0,10),c=d.workouts.filter(w=>w.date.slice(0,10)===k).length;heat.innerHTML+=`<div class="cell ${c>=3?"l3":c===2?"l2":c===1?"l1":""}" title="${k}: ${c} אימונים"></div>`}
- recent.innerHTML=d.workouts.slice(0,5).map(workoutHTML).join("")||'<div class="empty">עדיין אין אימונים. לחץ על "+ אימון" כדי להתחיל.</div>';
- workoutList.innerHTML=d.workouts.map(workoutHTML).join("")||'<div class="empty">אין אימונים עדיין.</div>';
- stTotal.textContent=done;stMinutes.textContent=d.workouts.reduce((a,w)=>a+(+w.minutes||0),0);stAvg.textContent=done?(d.workouts.reduce((a,w)=>a+w.rating,0)/done).toFixed(1):"0";stBest.textContent=bestStreak();
- let types={};d.workouts.forEach(w=>types[w.type]=(types[w.type]||0)+1);let sorted=Object.entries(types).sort((a,b)=>b[1]-a[1]);typeStats.innerHTML=sorted.map(([k,v])=>`<div class="item"><strong>${esc(k)}</strong><span class="badge">${v} אימונים</span></div>`).join("")||'<div class="empty">הנתונים יופיעו אחרי האימון הראשון.</div>';
- const ach=[["🥇","אימון ראשון",done>=1,"סיימת את האימון הראשון"],["🔥","3 ימים רצוף",streak()>=3,"בניית הרגל אמיתי"],["💪","10 אימונים",done>=10,"כבר נכנסת לקצב"],["⚡","25 אימונים",done>=25,"25 צעדים קדימה"],["🏆","50 אימונים",done>=50,"המשמעת מתחילה לדבר"],["👑","100 אימונים",done>=100,"רמה אחרת"],["🚀","200 אימונים",done>=200,"היעד הגדול הושלם"]];achList.innerHTML=ach.map(a=>`<div class="card ${a[2]?"":"locked"}"><div class="achIcon">${a[0]}</div><h3>${a[1]}</h3><span class="muted">${a[3]}</span></div>`).join("");
- journalList.innerHTML=d.journal.map(j=>`<div class="item"><div><strong>${dateStr(j.date)}</strong><div style="margin-top:5px">${esc(j.text)}</div></div></div>`).join("")||'<div class="empty">היומן שלך עדיין ריק.</div>';
-}
-function workoutHTML(w){return `<div class="item"><div><strong>${esc(w.type)} · ${w.minutes} דקות</strong><small>${dateStr(w.date)} · ${"⭐".repeat(w.rating)}${w.note?" · "+esc(w.note):""}</small></div><button class="btn danger" onclick="delWorkout(${w.id})">מחיקה</button></div>`}
-function bestStreak(){let ds=days(),best=0,run=0,prev=null;for(const k of ds){let dt=new Date(k);if(prev){let p=new Date(prev);p.setDate(p.getDate()+1);if(dt.toISOString().slice(0,10)===p.toISOString().slice(0,10))run++;else run=1}else run=1;best=Math.max(best,run);prev=k}return best}
-render();
-</script>
-</body>
-</html>
+0 / 100 XP
+היום מתחילים. אימון ראשון הוא תמיד הכי חשוב.
+ROAD TO GOAL · האתר שומר את הנתונים במכשיר שלך בלבד.
